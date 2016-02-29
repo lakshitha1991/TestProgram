@@ -1,0 +1,15 @@
+new1_tech_talk_tag:
+    resource: "@New1TechTalkBundle/Resources/config/routing/tag.yml"
+    prefix:   /tag
+
+new1_tech_talk_comment:
+    resource: "@New1TechTalkBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
+
+new1_tech_talk_post:
+    resource: "@New1TechTalkBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
+new1_tech_talk_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: New1TechTalkBundle:Default:index }

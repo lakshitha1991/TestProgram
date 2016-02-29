@@ -1,0 +1,21 @@
+Lak\TestBundle\Entity\Book:
+    type: entity
+    table: book
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO }
+    fields:
+        name: 
+            type: string
+            length: 255
+        author:
+            type: string
+            length: 255
+    manyToOne:
+        users:
+            targetEntity: User
+            inversedBy: books
+            joinColumn: 
+                name: ownerID
+                referencedColumnName: id

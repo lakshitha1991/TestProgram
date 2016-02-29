@@ -1,0 +1,38 @@
+user:
+    path:     /
+    defaults: { _controller: "TestBundle:User:index" }
+
+user_show:
+    path:     /{id}/show
+    defaults: { _controller: "TestBundle:User:show" }
+
+user_new:
+    path:     /new
+    defaults: { _controller: "TestBundle:User:new" }
+
+user_create:
+    path:     /create
+    defaults: { _controller: "TestBundle:User:create" }
+    methods:  POST
+
+user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "TestBundle:User:edit" }
+
+user_update:
+    path:     /{id}/update
+    defaults: { _controller: "TestBundle:User:update" }
+    methods:  [POST, PUT]
+
+user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "TestBundle:User:delete" }
+    methods:  [POST, DELETE]
+
+user_location:
+    path:     /{name}/location
+    defaults: { _controller: "TestBundle:User:location" }
+    
+user_ajax:
+    path:     /ajax
+    defaults: { _controller: "TestBundle:User:ajax" }

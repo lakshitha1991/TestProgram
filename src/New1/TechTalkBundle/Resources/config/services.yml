@@ -1,0 +1,4 @@
+services:
+#    new1_tech_talk.example:
+#        class: New1\TechTalkBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

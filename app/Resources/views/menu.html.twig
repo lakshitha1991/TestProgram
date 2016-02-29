@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+
+{% block menu %}
+    <nav class="navbar navbar-fixed-top navbar-default"  >
+        <div class="navbar-inners">
+            {{ knp_menu_render('TestBundle:Builder:mainMenu', { 'style': 'navbar' }) }}
+        </div>
+    </nav>
+{% endblock %}

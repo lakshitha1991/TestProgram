@@ -1,0 +1,23 @@
+Lak\TestBundle\Entity\User:
+    type: entity
+    table: user
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO }
+    fields:
+        name: 
+            type: string
+            length: 255
+        age:
+            type: integer
+        telephone: 
+            type: string
+            length: 255
+        validity:
+            type: string
+            length: 255
+    oneToMany:
+        books:
+            targetEntity: Book
+            mappedBy: users

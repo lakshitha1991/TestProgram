@@ -1,0 +1,17 @@
+test_book:
+    resource: "@TestBundle/Resources/config/routing/book.yml"
+    prefix:   /book
+
+test_user:
+    resource: "@TestBundle/Resources/config/routing/user.yml"
+    prefix:   /
+
+test_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: TestBundle:Default:index }
+    
+test_admin:
+    path:     /admin
+    defaults: { _controller: TestBundle:Default:admin }
+    
+

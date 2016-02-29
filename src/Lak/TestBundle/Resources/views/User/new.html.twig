@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>User creation</h1>
+
+    {{ form(form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('user') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {# These are the required libs, you really should move them somewhere else! #}
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    {# The code below generates the form validation #}
+    <script type="text/javascript">
+                $(document).ready(function () {
+        $('#lak_testbundle_user_submit').on('click', function() {
+                alert("no");
+                //alert($('#ikproj_groupebundle_eventsgroupe_start').val());
+        }))
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,20 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    name:
+        class: Lak\TestBundle\Security\Authorization\Voter\Name
+    hello_service:
+        class: Lak\TestBundle\Services\HelloService
+        arguments: ['@mailer']
+#    security.access.bookVoter:
+#        class: Lak\TestBundle\Security\Authorization\Voter\BookVoter
+#        public: false
+#        tags:
+#            - { name: security.voter }
+
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]

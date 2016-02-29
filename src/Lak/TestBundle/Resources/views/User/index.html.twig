@@ -1,0 +1,111 @@
+{% extends '::menu.html.twig' %}
+
+{% block body -%}
+    <br><br>
+    <div class="raw">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8"><br>
+
+            {# flashbag messages  #}
+            <div>
+                {% for flash_message in app.session.flashbag.get('welcome') %}
+                    <div class="alert alert-info">
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            {{ dump(entities) }}
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h1 id="results">User list</h1>
+                    <div class="ui-widget">
+                        <label>Tags: </label>
+                        <input id="tags">
+                    </div>
+                </div>
+                <div style="overflow: auto;">
+                    <table class="table table-striped table-bordered table-condensed table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Telephone</th>
+                                <th>Validity</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entity in entities %}
+                                <tr>
+                                    <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                    <td>{{ entity.name }}</td>
+                                    <td>{{ entity.age }}</td>
+                                    <td>{{ entity.telephone }}</td>
+                                    <td>{{ entity.validity }}</td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('user_edit', { 'id': entity.id }) }}">edit</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <ul>
+                    <li>
+                        <a href="{{ path('user_new') }}">
+                            Create a new entry
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <iframe width="500" height="500" src="http://www.cricketwa.com/embed.aspx?id=10801" frameborder="0" ></iframe>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $('#tags').autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: 'post',
+                        url: "{{ path('user_ajax') }}",
+                        dataType: 'json',
+                        data: {
+                            name_startsWith: $('#tags').val(),
+                            type: 'user'
+                        },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item,
+                                    value: item
+                                }
+                            }));
+                        },
+                        error: function (resp, errorThrown)
+                        {
+                            alert('Error: ' + errorThrown);
+                        }
+                    });
+                },
+                autoFocus: true,
+                minLength: 0
+            });
+
+        });
+    </script>
+{% endblock %}
