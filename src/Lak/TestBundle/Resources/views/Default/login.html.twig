@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+{% block body -%} 
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            {% if error %}
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="center-block">Login</h3>
+                </div>
+                <div class="panel-body">
+                    {{ form(form) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
